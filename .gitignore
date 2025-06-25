@@ -75,3 +75,4 @@ crashlytics-build.properties
 # Asset Store Files
 /[Aa]ssets/*
 !/[Aa]ssets/Project/
+.editorconfig
