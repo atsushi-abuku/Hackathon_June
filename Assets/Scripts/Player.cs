@@ -35,7 +35,10 @@ public class Player : MonoBehaviour
     void MoveLeft()
     {
         //Aキーを押すと左に動く
-
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            rb.linearVelocity = new Vector3(-1, 0, 0);
+        }
     }
     void Jump()
     {
