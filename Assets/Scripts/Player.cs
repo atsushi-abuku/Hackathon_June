@@ -27,7 +27,10 @@ public class Player : MonoBehaviour
     void MoveRight()
     {
         //Dキーを押すと右に動く
-
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            rb.linearVelocity = new Vector3(1, 0, 0);
+        }
     }
     void MoveLeft()
     {
