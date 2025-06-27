@@ -74,3 +74,4 @@ crashlytics-build.properties
 .editorconfig
 
 UserSettings/Layouts/default-6000.dwlt
+.DS_Store
