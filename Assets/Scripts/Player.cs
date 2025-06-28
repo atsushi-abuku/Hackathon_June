@@ -1,5 +1,5 @@
 ﻿using Unity.VisualScripting;
-using UnityEngine;//pinekatsu
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     {
         //Dキーを押すと右に動く
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+        Vector3 currentVelocity = rb.linearVelocity;//y軸方向維持
 
         if (Input.GetKey(KeyCode.D) && isGrounded)//地面にいるとき
         {
@@ -37,13 +38,14 @@ public class Player : MonoBehaviour
         }
         else if(Input.GetKey(KeyCode.D) && !isGrounded)//空中にいるとき
         {
-            rb.linearVelocity = new Vector3(0.5f, 0, 0);
+            rb.linearVelocity = new Vector3(1, currentVelocity.y, 0);
         }
     }
     void MoveLeft()
     {
         //Aキーを押すと左に動く
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+        Vector3 currentVelocity = rb.linearVelocity;//y軸方向維持
 
         if (Input.GetKey(KeyCode.A) && isGrounded)//地面にいるとき
         {
@@ -51,7 +53,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.A) && !isGrounded)//空中にいるとき
         {
-            rb.linearVelocity = new Vector3(-0.5f, 0, 0);
+            rb.linearVelocity = new Vector3(-1, currentVelocity.y, 0);
         }
     }
     void Jump()
@@ -61,7 +63,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) && isGrounded)
         {
-            rb.linearVelocity = new Vector3(0, 9, 0);
+            Vector3 currentVelocity = rb.linearVelocity;//x軸方向維持
+            rb.linearVelocity = new Vector3(currentVelocity.x, 9, 0);
         }
     }
 
