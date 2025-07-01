@@ -7,6 +7,7 @@ public class Goal : MonoBehaviour
     void Start()
     {
         isGoaled = false;
+        
     }
 
     // Update is called once per frame
@@ -20,6 +21,8 @@ public class Goal : MonoBehaviour
     {
         Debug.Log("GOAL");
         //isGoaledをtrueに変える
+        isGoaled = true;
+
 
     }
 }
