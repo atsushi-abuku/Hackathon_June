@@ -2,9 +2,9 @@
 
 enum Fase
 {
-    GOING,
-    BACK,
-    FINISH
+    GOING,//行き
+    BACK, //帰り
+    FINISH //終わり
 }
 public class Stage : MonoBehaviour
 {
@@ -13,21 +13,23 @@ public class Stage : MonoBehaviour
     float timeAccumulator;
 
     public GameObject field;
-    private Goal firstGoal;//行きのゴール
-    private Goal secondGoal;//帰りのゴール
+    public GameObject firstGoal;//行きのゴール
+    public GameObject secondGoal;//帰りのゴール
+    public TMPro.TextMeshProUGUI textMeshPro;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         fase = Fase.GOING;
         time = 10f;
-        //field内のゴールをfirstGoal,secondGoalに代入
         timeAccumulator = 0f;
+        firstGoal.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameOver();
+        //textMeshPro.text = time + "seconds";
+        StageUpdate();
         //時間を減らす(1秒ごと）
         timeAccumulator += Time.deltaTime;
         if(timeAccumulator >= 1f)
@@ -35,7 +37,6 @@ public class Stage : MonoBehaviour
             time--;
             timeAccumulator = 0f;
         }
-        GameOver();
     }
 
     void GameOver()
@@ -65,7 +66,7 @@ public class Stage : MonoBehaviour
 
     void Going()
     {
-        if (firstGoal.GetIsGoaled())
+        if (firstGoal.GetComponent<Goal>().GetIsGoaled())
         {
             //firstGoalを消し，secondGoalを出現させる
 
@@ -75,7 +76,7 @@ public class Stage : MonoBehaviour
 
     void Back()
     {
-        if (secondGoal.GetIsGoaled())
+        if (secondGoal.GetComponent<Goal>().GetIsGoaled())
         {
             fase = Fase.FINISH;
         }
@@ -84,5 +85,6 @@ public class Stage : MonoBehaviour
     void Finish()
     {
         //GAMEOVERなら「GAMEOVER」,CLEARなら「CLEAR」とUIに表示
+        GameOver();
     }
 }
