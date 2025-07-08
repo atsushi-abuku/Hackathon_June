@@ -25,4 +25,10 @@ public class Goal : MonoBehaviour
 
 
     }
+
+    public bool GetIsGoaled()
+    {
+        //isGoaledの状態を返す
+        return isGoaled;
+    }
 }
