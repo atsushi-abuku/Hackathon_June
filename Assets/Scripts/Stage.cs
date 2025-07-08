@@ -10,6 +10,7 @@ public class Stage : MonoBehaviour
 {
     Fase fase;
     float time;
+    float timeAccumulator;
 
     public GameObject field;
     private Goal firstGoal;//行きのゴール
@@ -18,16 +19,9 @@ public class Stage : MonoBehaviour
     void Start()
     {
         fase = Fase.GOING;
-        time = 10;
-        //field内のゴールをfirstGoal,secondGoalに代入
-
-    float timeAccumulator = 0f;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
         time = 10f;
+        //field内のゴールをfirstGoal,secondGoalに代入
+        timeAccumulator = 0f;
     }
 
     // Update is called once per frame
