@@ -35,25 +35,42 @@ public class Stage : MonoBehaviour
         //GAMEOVERなら「GAMEOVER」と表示
     }
 
-    void CheckGoal()
+    void StageUpdate()
     {
         switch (fase)
         {
             case Fase.GOING:
-                if (firstGoal.GetIsGoaled())
-                {
-                    //firstGoalを消し，secondGoalを出現させる
-
-                    fase = Fase.BACK;
-                }
+                Going();
                 break;
             case Fase.BACK:
-                if (secondGoal.GetIsGoaled())
-                {
-                    fase = Fase.FINISH;
-                }
+                Back();
+                break;
+            case Fase.FINISH:
+                Finish();
                 break;
         }
     }
 
+    void Going()
+    {
+        if (firstGoal.GetIsGoaled())
+        {
+            //firstGoalを消し，secondGoalを出現させる
+
+            fase = Fase.BACK;
+        }
+    }
+
+    void Back()
+    {
+        if (secondGoal.GetIsGoaled())
+        {
+            fase = Fase.FINISH;
+        }
+    }
+
+    void Finish()
+    {
+        //GAMEOVERなら「GAMEOVER」,CLEARなら「CLEAR」とUIに表示
+    }
 }
