@@ -37,6 +37,10 @@ public class Stage : MonoBehaviour
             time--;
             timeAccumulator = 0f;
         }
+        if (time > 0)
+        {
+            textMeshPro.text = Mathf.Ceil(time).ToString();
+        }
     }
 
     void GameOver()
