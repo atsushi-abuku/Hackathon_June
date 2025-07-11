@@ -22,7 +22,6 @@ public class Stage : MonoBehaviour
         fase = Fase.GOING;
         time = 10f;
         timeAccumulator = 0f;
-        firstGoal.SetActive(false);
     }
 
     // Update is called once per frame
