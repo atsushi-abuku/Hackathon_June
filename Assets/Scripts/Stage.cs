@@ -36,7 +36,7 @@ public class Stage : MonoBehaviour
             time--;
             timeAccumulator = 0f;
         }
-        if (time > 0)
+        if (fase != Fase.FINISH && time >= 0)
         {
             textMeshPro.text = Mathf.Ceil(time).ToString();
         }
@@ -45,9 +45,13 @@ public class Stage : MonoBehaviour
     void GameOver()
     {
         //GAMEOVERなら「GAMEOVER」と表示
-        if (time == 0f)
+        if (time < 0f)
         {
-            Debug.Log("「GAMEOVER」");
+            textMeshPro.text = "GAMEOVER";
+        }
+        else
+        {
+            textMeshPro.text = "CLEAR";
         }
     }
 
