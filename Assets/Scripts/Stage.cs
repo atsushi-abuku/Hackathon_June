@@ -38,7 +38,11 @@ public class Stage : MonoBehaviour
         }
         if (fase != Fase.FINISH && time >= 0)
         {
-            textMeshPro.text = Mathf.Ceil(time).ToString();
+            textMeshPro.text = Mathf.Ceil(time).ToString() + "second";
+        }
+        if(fase != Fase.FINISH && time < 0)
+        {
+            textMeshPro.text = "GAMEOVER";
         }
     }
 
