@@ -30,9 +30,6 @@ public class Goal : MonoBehaviour
 
 
 
-
-
-
     }
     public bool GetIsGoaled()
     {
